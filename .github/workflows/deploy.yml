@@ -1,5 +1,12 @@
 name: Deploy to App Engine
+
 on: [push]
+
+defaults:
+  run:
+    shell: bash
+    working-directory: app
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -7,6 +14,6 @@ jobs:
       - id: Deploy
         uses: google-github-actions/deploy-appengine@main
         with:
-          deliverables: app/app.yaml
+          deliverables: app.yaml
           project_id: ${{ secrets.GCP_PROJECT }}
           credentials: ${{ secrets.GCP_SA_KEY }}
