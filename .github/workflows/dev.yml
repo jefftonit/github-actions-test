@@ -1,9 +1,13 @@
-name: Deploy to App Engine
+name: Dev
 
-on: [push]
+on: 
+  push:
+    branches:
+      - develop
 
 jobs:
   deploy:
+    name: Deploy to App Engine
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
