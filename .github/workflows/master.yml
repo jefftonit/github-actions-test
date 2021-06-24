@@ -1,0 +1,19 @@
+name: Production
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to App Engine
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: Deploy
+        uses: google-github-actions/deploy-appengine@main
+        with:
+          deliverables: app/app.yaml
+          project_id: ${{ secrets.DEV_GCP_PROJECT }}
+          credentials: ${{ secrets.DEV_GCP_SA_KEY }}
