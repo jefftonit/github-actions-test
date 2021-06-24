@@ -14,6 +14,8 @@ jobs:
       - uses: ikuanyshbekov/app-yaml-env-compiler@v1.0
         env:
           TEST_VAR: ${{ secrets.TEST_VAR }}
+        with:
+          appyamlpath: './app/app.yaml'
       - id: Deploy
         uses: google-github-actions/deploy-appengine@main
         with:
