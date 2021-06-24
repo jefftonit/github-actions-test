@@ -1,4 +1,4 @@
 runtime: python39
 entrypoint: uvicorn main:app --port $PORT
 env_variables:
-  TEST_VAR: "test-var"
+  TEST_VAR: $TEST_VAR
