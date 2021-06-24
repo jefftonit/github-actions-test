@@ -19,5 +19,5 @@ async def app(scope, receive, send):
     })
     await send({
         'type': 'http.response.body',
-        'body': b'Hello, world version dev!',
+        'body': b'Hello, world version dev! test var:' .format(tester),
     })
