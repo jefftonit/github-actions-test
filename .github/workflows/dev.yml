@@ -1,5 +1,6 @@
 name: Dev
 
+
 on: 
   push:
     branches:
@@ -9,6 +10,7 @@ jobs:
   deploy:
     name: Deploy to App Engine
     runs-on: ubuntu-latest
+    environment: Dev
     steps:
       - uses: actions/checkout@v2
       - uses: gaspb/app-yaml-env-compiler@master
