@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 async def app(scope, receive, send):
     logger.debug('log my app')
     dbString = os.getenv('DB_STRING')
-    body = 'Hello, world, style pilot project! db string: %s' % dbString
+    body = 'Hello, world, style pilot project version 3! db string: %s' % dbString
     bodyBytes = body.encode()
     assert scope['type'] == 'http'
 
