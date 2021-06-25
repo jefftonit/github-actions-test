@@ -6,8 +6,9 @@ logger = logging.getLogger(__name__)
 
 async def app(scope, receive, send):
     logger.debug('log my app')
-    tester = os.getenv('STYLE_PILOT_CONN_STR')
-    logger.debug('test var: %s', tester)
+    tester = os.getenv('TEST_VAR')
+    body = 'Hello, world version dev! test var: %s' % tester
+    bodyBytes = body.encode()
     assert scope['type'] == 'http'
 
     await send({
@@ -19,5 +20,5 @@ async def app(scope, receive, send):
     })
     await send({
         'type': 'http.response.body',
-        'body': b'Hello, world version dev! test var:' .format(tester),
+        'body': bodyBytes,
     })
