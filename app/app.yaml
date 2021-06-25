@@ -1,5 +1,4 @@
 runtime: python39
 entrypoint: uvicorn main:app --port $PORT
-service: style-pilot
 env_variables:
   DB_STRING: $DB_STRING
