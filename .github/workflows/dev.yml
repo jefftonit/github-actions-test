@@ -9,18 +9,18 @@ on:
 jobs:
   deploy:
     name: Deploy to App Engine
-    runs-on: ubuntu-latest
     environment: Dev
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: gaspb/app-yaml-env-compiler@master
         env:
-          TEST_VAR: ${{ secrets.TEST_VAR }}
+          DB_STRING: ${{ secrets.DB_STRING }}
         with:
           appyamlpath: './app/app.yaml'
       - id: Deploy
         uses: google-github-actions/deploy-appengine@main
         with:
           deliverables: app/app.yaml
-          credentials: ${{ secrets.DEV_GCP_SA_KEY }}
+          credentials: ${{ secrets.GCP_SA_KEY }}
           project_id: ${{ secrets.GCP_PROJECT }}

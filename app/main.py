@@ -6,8 +6,8 @@ logger = logging.getLogger(__name__)
 
 async def app(scope, receive, send):
     logger.debug('log my app')
-    tester = os.getenv('TEST_VAR')
-    body = 'Hello, world version dev! test var: %s' % tester
+    dbString = os.getenv('DB_STRING')
+    body = 'Hello, world version dev! db string: %s' % dbString
     bodyBytes = body.encode()
     assert scope['type'] == 'http'
 
