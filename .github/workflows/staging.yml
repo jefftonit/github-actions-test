@@ -1,0 +1,26 @@
+name: Staging
+
+
+on: 
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    name: Deploy to App Engine
+    environment: Staging
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gaspb/app-yaml-env-compiler@master
+        env:
+          DB_STRING: ${{ secrets.DB_STRING }}
+        with:
+          appyamlpath: './app/app.yaml'
+      - id: Deploy
+        uses: google-github-actions/deploy-appengine@main
+        with:
+          deliverables: app/app.yaml
+          credentials: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ secrets.GCP_PROJECT }}
